@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Cartographic Solutions</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+</head>
+<body class="bg-gray-900 text-gray-100 font-sans">
+  <header class="relative overflow-hidden flex flex-col items-center py-10 text-center border-b border-gray-700">
+    <!-- Contour lines SVG background -->
+    <div class="absolute inset-0 left-0 right-0 w-full h-full pointer-events-none z-0">
+      <svg viewBox="0 0 1200 200" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full opacity-30">
+        <path d="M0,100 Q300,200 600,100 T1200,100" stroke="#38bdf8" stroke-width="2" fill="none"/>
+        <path d="M0,120 Q300,220 600,120 T1200,120" stroke="#0ea5e9" stroke-width="1.5" fill="none"/>
+        <path d="M0,80 Q300,180 600,80 T1200,80" stroke="#7dd3fc" stroke-width="1" fill="none"/>
+      </svg>
+    </div>
+
+    <!-- Left stretched image -->
+    <!-- Left stretched image -->
+    <img src="Mountain_Symbol.png" alt=""
+      class="absolute left-0 top-7 z-0 object-cover h-40"
+      style="height: 17vh; width: 30vw;" />
+
+    <img src="Mountain_Symbol.png" alt=""
+      class="absolute right-0 top-7 z-0 object-cover h-40"
+      style="height: 17vh; width: 30vw; transform: scaleX(-1);" />
+    <div class="relative z-10 w-full max-w-5xl mx-auto px-4">
+      <div class="flex items-center justify-between w-full">
+        <img src="Business_Logo_round.png" alt="Logo" class="h-40 w-40" />
+        <h1 class="text-6xl font-bold text-center flex-1">About</h1>
+        <img src="Business_Logo_round.png" alt="Logo" class="h-40 w-40" />
+      </div>
+      <p class="text-lg text-gray-400 mt-0.0000000000001 text-center">Get to know Cartographic Solutions</p>
+      <nav class="mt-1 space-x-4 text-lg">
+        <a href="Cartographic_Solutions_Webpage.html" class="text-blue-400 hover:underline">Home</a>
+        <a href="contact.html" class="text-yellow-400 hover:underline">Contact</a>
+        <!--<a href="#portfolio" class="text-green-400 hover:underline">Portfolio</a>-->
+      </nav>  
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section class="px-6 py-16 max-w-4xl mx-auto">
+    <h2 class="text-3xl md:text-5xl font-semibold mb-6 text-center">My Story</h2>
+    <p class="text-lg text-gray-300 mb-8 text-center">
+      Cartographic Solutions was founded with a passion for transforming complex geospatial data into clear, actionable insights. I bring together years of experience in GIS, cartography, and data visualization to help clients make informed decisions and tell compelling spatial stories.
+    </p>
+    <div class="grid md:grid-cols-2 gap-8">
+      <div>
+        <h3 class="text-2xl font-bold mb-2">My Mission</h3>
+        <p class="text-gray-400 mb-4">To empower organizations and individuals with innovative mapping solutions that drive understanding, engagement, and progress.</p>
+        <h3 class="text-2xl font-bold mb-2">My Values</h3>
+        <ul class="list-disc list-inside text-gray-400">
+          <li>Accuracy & Integrity</li>
+          <li>Creativity & Innovation</li>
+          <li>Client Collaboration</li>
+          <li>Continuous Learning</li>
+        </ul>
+        <img src="Business_Logo.png" alt="Business Logo" class="rounded-lg shadow-lg mt-16 w-full max-w-xs mx-auto h-72 object-contain" />
+      </div>
+      <div>
+        <h3 class="text-2xl font-bold mb-2">Meet your GIS Specialist</h3>
+        <p class="text-gray-400 mb-2">
+          My name is Jason Torres-Smith, and my passion lies in the world of GIS—transforming raw data into visually compelling maps and insightful infographics. From data collection and analysis to the art of cartographic design, I thrive on helping others see the story behind the numbers. I founded Cartographic Solutions to empower you with the knowledge and clarity needed to make confident, informed decisions. Whether you’re facing a complex challenge or seeking a new perspective, I’m dedicated to delivering geospatial solutions that illuminate the path forward.
+        </p>
+        <img src="Profile_pic.jpg" alt="Team" class="rounded-lg shadow-lg mt-4 w-full max-w-xs mx-auto h-72 object-contain" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center py-8 text-gray-500 text-sm">
+    &copy; 2025 Cartographic Solutions. All rights reserved.
+  </footer>
+</body>
+</html>

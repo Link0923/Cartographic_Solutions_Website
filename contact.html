@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Cartographic Solutions</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-gray-100 font-sans">
+  <!-- Header -->
+  <header class="relative overflow-hidden flex flex-col items-center py-10 text-center border-b border-gray-700">
+    <div class="absolute inset-0 left-0 right-0 w-full h-full pointer-events-none z-0">
+      <svg viewBox="0 0 1200 200" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full opacity-30">
+        <path d="M0,100 Q300,200 600,100 T1200,100" stroke="#38bdf8" stroke-width="2" fill="none"/>
+        <path d="M0,120 Q300,220 600,120 T1200,120" stroke="#0ea5e9" stroke-width="1.5" fill="none"/>
+        <path d="M0,80 Q300,180 600,80 T1200,80" stroke="#7dd3fc" stroke-width="1" fill="none"/>
+      </svg>
+    </div>
+    <img src="Mountain_Symbol.png" alt="" class="absolute left-0 top-7 z-0 object-cover h-40" style="height: 17vh; width: 30vw;" />
+    <img src="Mountain_Symbol.png" alt="" class="absolute right-0 top-7 z-0 object-cover h-40" style="height: 17vh; width: 30vw; transform: scaleX(-1);" />
+    <div class="relative z-10 w-full max-w-5xl mx-auto px-4">
+      <div class="flex items-center justify-between w-full">
+        <img src="Business_Logo_round.png" alt="Logo" class="header-logo" />
+        <h1 class="text-6xl font-bold text-center flex-1">Contact Me</h1>
+        <img src="Business_Logo_round.png" alt="Logo" class="header-logo" />
+      </div>
+      <nav class="mt-0 space-x-4 text-lg">
+        <a href="Cartographic_Solutions_Webpage.html" class="text-blue-400 hover:underline">Home</a>
+        <a href="about.html" class="text-green-400 hover:underline">About</a>
+        <!--<a href="#portfolio" class="text-yellow-400 hover:underline">Portfolio</a>-->
+      </nav>
+    </div>
+    <style>
+      .header-logo {
+        height: 10rem;
+        width: 10rem;
+        border-radius: 9999px;
+        object-fit: cover;
+        box-shadow: 0 2px 12px 0 rgba(0,0,0,0.15);
+        background: #222;
+        border: none;
+      }
+      @media (max-width: 640px) {
+        .header-logo {
+          height: 4rem;
+          width: 4rem;
+        }
+        h1.text-6xl {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </header>
+
+  <!-- Contact Section -->
+  <section class="px-6 py-16 max-w-2xl mx-auto">
+    <h2 class="text-3xl font-semibold mb-6 text-center">Get in Touch</h2>
+    <p class="text-lg text-gray-300 mb-8 text-center">Have a project in mind or a question? Fill out the form below and I'll get back to you as soon as possible.</p>
+    <form id="contact-form" class="bg-gray-800 bg-opacity-90 p-8 rounded-xl shadow-lg space-y-6">
+      <div>
+        <label for="name" class="block text-gray-200 mb-2">Name</label>
+        <input type="text" id="name" name="name" required class="w-full px-4 py-2 rounded-lg bg-gray-700 text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      </div>
+      <div>
+        <label for="email" class="block text-gray-200 mb-2">Email</label>
+        <input type="email" id="email" name="email" required class="w-full px-4 py-2 rounded-lg bg-gray-700 text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      </div>
+      <div>
+        <label for="message" class="block text-gray-200 mb-2">Message</label>
+        <textarea id="message" name="message" rows="5" required class="w-full px-4 py-2 rounded-lg bg-gray-700 text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+      </div>
+      <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-3 rounded-lg shadow-lg transition">Send</button>
+    </form>
+    <div id="form-status" class="mt-4 text-center text-green-400"></div>
+    <script>
+      document.getElementById('contact-form').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const form = e.target;
+        const data = new FormData(form);
+        const status = document.getElementById('form-status');
+        status.textContent = 'Sending...';
+        try {
+          const res = await fetch('https://script.google.com/macros/s/AKfycbyhHIC3F4m1ViQmYKQCqLswVTQ3PW9452A96MEx1xl0wMhShZndiBALNeDnFMvUty-9wg/exec', {
+            method: 'POST',
+            body: data
+          });
+          if (res.ok) {
+            status.innerHTML = '<span class="block">Message sent!</span><span class="block">You will receive a response within two business days.</span>';
+            form.reset();
+          } else {
+            status.textContent = 'There was an error. Please try again later.';
+          }
+        } catch {
+          status.textContent = 'There was an error. Please try again later.';
+        }
+      });
+    </script>
+    <div class="mt-10 text-center text-gray-300">
+      <p><strong>Phone:</strong> 512-967-4405</p>
+</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center py-8 text-gray-500 text-sm">
+    &copy; 2025 Cartographic Solutions. All rights reserved.
+  </footer>
+</body>
+</html>
