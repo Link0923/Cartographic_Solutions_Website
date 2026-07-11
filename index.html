@@ -9,9 +9,9 @@
 </head>
 <body class="bg-gray-900 text-gray-100 font-sans">
   <!-- Header -->
-  <header class="relative overflow-hidden flex flex-col items-center py-10 text-center border-b border-gray-700">
-    <!-- Contour lines SVG background -->
-    <div class="absolute inset-0 left-0 right-0 w-full h-full pointer-events-none z-0">
+  <header class="relative py-10 text-center border-b border-gray-700">
+    <!-- SVG background between mountains -->
+    <div class="svg-container">
       <svg viewBox="0 0 1200 200" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full opacity-30">
         <path d="M0,100 Q300,200 600,100 T1200,100" stroke="#38bdf8" stroke-width="2" fill="none"/>
         <path d="M0,120 Q300,220 600,120 T1200,120" stroke="#0ea5e9" stroke-width="1.5" fill="none"/>
@@ -19,23 +19,56 @@
       </svg>
     </div>
 
-    <!-- Left stretched image -->
-    <!-- Left stretched image -->
-    <img src="Mountain_Symbol.png" alt=""
-      class="absolute left-0 top-7 z-0 object-cover h-40"
-      style="height: 17vh; width: 30vw;" />
-
-    <img src="Mountain_Symbol.png" alt=""
-      class="absolute right-0 top-7 z-0 object-cover h-40"
-      style="height: 17vh; width: 30vw; transform: scaleX(-1);" />
-    <div class="relative z-10 w-full max-w-5xl mx-auto px-4">
-      <div class="flex items-center justify-between w-full">
-        <img src="Business_Logo_round.png" alt="Logo" class="h-40 w-40" />
-        <h1 class="text-6xl font-bold text-center flex-1">Cartographic Solutions</h1>
-        <img src="Business_Logo_round.png" alt="Logo" class="h-40 w-40" />
+    <!-- Main header content -->
+    <div class="relative z-10 w-full px-4">
+      <div class="flex items-center justify-between w-full gap-1">
+        <img src="Mountain_Symbol.png" alt="" class="mountain-img" />
+        <img src="Business_Logo_round.png" alt="Logo" class="header-logo flex-shrink-0" />
+        <h1 class="text-6xl font-bold text-center flex-shrink">Cartographic Solutions</h1>
+        <img src="Business_Logo_round.png" alt="Logo" class="header-logo flex-shrink-0" />
+        <img src="Mountain_Symbol.png" alt="" class="mountain-img mountain-right" />
       </div>
       <p class="text-lg text-gray-400 mt-0.0000000000001 text-center">GIS Analysis & Data Mining</p>
     </div>
+    <style>
+      .header-logo {
+        height: 6vw;
+        width: 6vw;
+        min-height: 2.5rem;
+        min-width: 2.5rem;
+        max-height: 8rem;
+        max-width: 8rem;
+        border-radius: 9999px;
+        object-fit: cover;
+        box-shadow: 0 2px 12px 0 rgba(0,0,0,0.15);
+        background: #222;
+        border: none;
+      }
+      h1.text-6xl {
+        font-size: clamp(1.5rem, 5vw, 3.75rem);
+        white-space: normal;
+        line-height: 1.2;
+      }
+      .mountain-img {
+        height: clamp(100px, 15vh, 200px);
+        width: clamp(120px, 15vw, 350px);
+        object-fit: cover;
+        opacity: 0.9;
+        flex-shrink: 0;
+      }
+      .mountain-right {
+        transform: scaleX(-1);
+      }
+      .svg-container {
+        position: absolute;
+        top: 0;
+        left: clamp(120px, 15vw, 350px);
+        right: clamp(120px, 15vw, 350px);
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+      }
+    </style>
   </header>
 
   <!-- Hero Section -->
@@ -84,7 +117,52 @@
           <p class="text-gray-300">Engaging videos and motion maps that bring spatial stories to life.</p>
         </div>
       </div>
+
+      <!-- Show More Button -->
+      <div class="text-center mt-10">
+        <button id="toggleMore" class="bg-blue-600 hover:bg-blue-700 text-white font-medium px-8 py-3 rounded-lg shadow-lg transition">
+          Show More Services
+        </button>
+      </div>
+
+      <!-- Additional Services (Hidden by default) -->
+      <div id="moreServices" style="max-height: 0; overflow: hidden; transition: max-height 0.8s ease-in-out;">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mt-8" style="padding-bottom: 2rem; transform: translateY(-20px); opacity: 0; transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;">
+            <div class="bg-gray-700 bg-opacity-80 p-6 rounded-xl shadow-lg">
+              <h4 class="text-xl font-bold mb-2">Full Stack Developer</h4>
+              <p class="text-gray-300">End-to-end development solutions from database design to front-end user interfaces.</p>
+            </div>
+            <div class="bg-gray-700 bg-opacity-80 p-6 rounded-xl shadow-lg">
+              <h4 class="text-xl font-bold mb-2">Webpage Developer</h4>
+              <p class="text-gray-300">Custom website design and development tailored to your business needs.</p>
+            </div>
+            <div class="bg-gray-700 bg-opacity-80 p-6 rounded-xl shadow-lg">
+              <h4 class="text-xl font-bold mb-2">Environmental Consulting</h4>
+              <p class="text-gray-300">Expert guidance on environmental impact assessments and sustainability planning.</p>
+            </div>
+          </div>
+      </div>
     </div>
+
+    <script>
+      document.getElementById('toggleMore').addEventListener('click', function() {
+        const moreServices = document.getElementById('moreServices');
+        const innerContent = moreServices.querySelector('.grid');
+        const button = document.getElementById('toggleMore');
+        
+        if (moreServices.style.maxHeight === '0px' || moreServices.style.maxHeight === '') {
+          moreServices.style.maxHeight = '1200px';
+          innerContent.style.transform = 'translateY(0)';
+          innerContent.style.opacity = '1';
+          button.textContent = 'Show Less Services';
+        } else {
+          innerContent.style.transform = 'translateY(-20px)';
+          innerContent.style.opacity = '0';
+          moreServices.style.maxHeight = '0';
+          button.textContent = 'Show More Services';
+        }
+      });
+    </script>
   </section>
 
   <!-- Footer -->
