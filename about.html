@@ -8,9 +8,9 @@
   <script src="https://cdn.jsdelivr.net/npm/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </head>
 <body class="bg-gray-900 text-gray-100 font-sans">
-  <header class="relative overflow-hidden flex flex-col items-center py-10 text-center border-b border-gray-700">
-    <!-- Contour lines SVG background -->
-    <div class="absolute inset-0 left-0 right-0 w-full h-full pointer-events-none z-0">
+  <header class="relative py-10 text-center border-b border-gray-700">
+    <!-- SVG background between mountains -->
+    <div class="svg-container">
       <svg viewBox="0 0 1200 200" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full opacity-30">
         <path d="M0,100 Q300,200 600,100 T1200,100" stroke="#38bdf8" stroke-width="2" fill="none"/>
         <path d="M0,120 Q300,220 600,120 T1200,120" stroke="#0ea5e9" stroke-width="1.5" fill="none"/>
@@ -18,28 +18,60 @@
       </svg>
     </div>
 
-    <!-- Left stretched image -->
-    <!-- Left stretched image -->
-    <img src="Mountain_Symbol.png" alt=""
-      class="absolute left-0 top-7 z-0 object-cover h-40"
-      style="height: 17vh; width: 30vw;" />
-
-    <img src="Mountain_Symbol.png" alt=""
-      class="absolute right-0 top-7 z-0 object-cover h-40"
-      style="height: 17vh; width: 30vw; transform: scaleX(-1);" />
-    <div class="relative z-10 w-full max-w-5xl mx-auto px-4">
-      <div class="flex items-center justify-between w-full">
-        <img src="Business_Logo_round.png" alt="Logo" class="h-40 w-40" />
-        <h1 class="text-6xl font-bold text-center flex-1">About</h1>
-        <img src="Business_Logo_round.png" alt="Logo" class="h-40 w-40" />
+    <!-- Main header content -->
+    <div class="relative z-10 w-full px-4">
+      <div class="flex items-center justify-between w-full gap-1">
+        <img src="Mountain_Symbol.png" alt="" class="mountain-img" />
+        <img src="Business_Logo_round.png" alt="Logo" class="header-logo flex-shrink-0" />
+        <h1 class="text-6xl font-bold text-center flex-shrink">About</h1>
+        <img src="Business_Logo_round.png" alt="Logo" class="header-logo flex-shrink-0" />
+        <img src="Mountain_Symbol.png" alt="" class="mountain-img mountain-right" />
       </div>
       <p class="text-lg text-gray-400 mt-0.0000000000001 text-center">Get to know Cartographic Solutions</p>
       <nav class="mt-1 space-x-4 text-lg">
-        <a href="index.html" class="text-blue-400 hover:underline">Home</a>
+        <a href="Cartographic_Solutions_Webpage.html" class="text-blue-400 hover:underline">Home</a>
         <a href="contact.html" class="text-yellow-400 hover:underline">Contact</a>
         <!--<a href="#portfolio" class="text-green-400 hover:underline">Portfolio</a>-->
       </nav>  
     </div>
+    <style>
+      .header-logo {
+        height: 6vw;
+        width: 6vw;
+        min-height: 2.5rem;
+        min-width: 2.5rem;
+        max-height: 8rem;
+        max-width: 8rem;
+        border-radius: 9999px;
+        object-fit: cover;
+        box-shadow: 0 2px 12px 0 rgba(0,0,0,0.15);
+        background: #222;
+        border: none;
+      }
+      h1.text-6xl {
+        font-size: clamp(1.75rem, 5vw, 3.75rem);
+        white-space: nowrap;
+      }
+      .mountain-img {
+        height: clamp(100px, 15vh, 200px);
+        width: clamp(120px, 15vw, 350px);
+        object-fit: cover;
+        opacity: 0.9;
+        flex-shrink: 0;
+      }
+      .mountain-right {
+        transform: scaleX(-1);
+      }
+      .svg-container {
+        position: absolute;
+        top: 0;
+        left: clamp(120px, 15vw, 350px);
+        right: clamp(120px, 15vw, 350px);
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+      }
+    </style>
   </header>
 
   <!-- About Section -->
